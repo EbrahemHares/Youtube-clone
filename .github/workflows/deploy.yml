@@ -59,7 +59,7 @@ jobs:
         run: echo "RAPIDAPI_KEY=${{ secrets.VITE_RAPID_API_KEY }}" >> $GITHUB_ENV
 
       - name: Start proxy server
-        run: pm2 start ./server.js --name "proxy-server"
+        run: pm2 start src/setupProxy.jsx --name "proxy-server"
 
       - name: Wait for proxy server to start
         run: pm2 logs "proxy-server" | grep -q "Server started" && echo "Proxy server started successfully"
