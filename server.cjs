@@ -31,6 +31,8 @@ app.use(express.static('dist'));
 // start the server
 const PORT = process.env.PORT || 3000;
 
+console.log('Starting server...');
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
+  console.log('Server started.'); 
 });
