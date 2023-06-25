@@ -61,7 +61,7 @@ jobs:
         run: mkdir dist
 
       - name: Copy server.js file
-        run: cp server.js dist/
+        run: cp server.cjs dist/
 
       - name: Start proxy server
         run: node dist/server.js
