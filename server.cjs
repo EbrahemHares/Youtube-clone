@@ -7,8 +7,8 @@ dotenv.config();
 const app = express();
 
 // configure the proxy middleware
-const rapidApiKey = process.env.VITE_RAPID_API_KEY;
-console.log('RapidAPI key:', rapidApiKey);
+// const rapidApiKey = process.env.VITE_RAPID_API_KEY;
+console.log('RapidAPI key:', '437204adeamsh1aa38f354ea3637p190155jsn9eef677131fd');
 
 const proxy = createProxyMiddleware({
   target: 'https://youtube-v31.p.rapidapi.com',
@@ -18,7 +18,7 @@ const proxy = createProxyMiddleware({
     '^/': '/',
   },
   headers: {
-    'X-RapidAPI-Key': rapidApiKey,
+    'X-RapidAPI-Key': '437204adeamsh1aa38f354ea3637p190155jsn9eef677131fd',
     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
   },
 });
