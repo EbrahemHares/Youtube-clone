@@ -71,7 +71,10 @@ jobs:
         run: node dist/server.cjs
 
       - name: Wait for proxy server to start
-        run: curl -sSf http://localhost:3000/api/healthcheck || exit 1
+        run: |
+              echo "Waiting for proxy server to start..."
+              wait-on http://localhost:3000 -t 60000
+              echo "Proxy server started."
 
       - name: Stop proxy server
         run: pkill node

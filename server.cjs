@@ -8,6 +8,7 @@ const app = express();
 
 // configure the proxy middleware
 const rapidApiKey = process.env.VITE_RAPID_API_KEY;
+console.log('RapidAPI key:', rapidApiKey);
 
 const proxy = createProxyMiddleware({
   target: 'https://youtube-v31.p.rapidapi.com',
@@ -36,3 +37,4 @@ app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
   console.log('Server started.'); 
 });
+console.log('Server started go for next step.'); 
