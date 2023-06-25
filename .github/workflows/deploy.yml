@@ -60,11 +60,11 @@ jobs:
       - name: Create dist directory
         run: mkdir dist
 
-      - name: Copy server.js file
+      - name: Copy server.cjs file
         run: cp server.cjs dist/
 
       - name: Start proxy server
-        run: node dist/server.js
+        run: node dist/server.cjs
 
       - name: Wait for proxy server to start
         run: curl -sSf http://localhost:3000/api/healthcheck || exit 1
