@@ -53,22 +53,24 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npm install pm2
-
+          
       - name: Set RapidAPI key environment variable
-        run: echo "RAPIDAPI_KEY=${{ secrets.VITE_RAPID_API_KEY }}" >> $GITHUB_ENV
+        run: echo "VITE_RAPID_API_KEY=${{ secrets.VITE_RAPID_API_KEY }}" >> $GITHUB_ENV
+
+      - name: Copy server.js file
+        run: cp server.js dist/
 
       - name: Start proxy server
-        run: pm2 start src/setupProxy.jsx --name "proxy-server"
+        run: node dist/server.js
 
       - name: Wait for proxy server to start
-        run: pm2 logs "proxy-server" | grep -q "Server started" && echo "Proxy server started successfully"
+        run: curl -sSf http://localhost:3000/api/healthcheck || exit 1
 
       - name: Stop proxy server
-        run: pm2 stop "proxy-server"
+        run: pkill node
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: dist
