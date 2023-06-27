@@ -5,7 +5,7 @@ import {Navbar, Feed, VideoDetail, ChannelDetail, SearchFeed} from "./components
 
 function App() {
   return (
-    <BrowserRouter basename='/Youtube-clone'>
+    <BrowserRouter >
       <Box sx={{backgroundColor:'#000'}}>
         <Navbar />
         <Routes>
