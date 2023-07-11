@@ -8,8 +8,6 @@ const Feed = () => {
   
   useEffect (()=>{
     FetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>setVideos(data.items))
-    console.log(videos);
-
   },[selectedCategory])
   return (
     <Stack sx={{ flexDirection:{sx:"column", md:"row"}}}>
